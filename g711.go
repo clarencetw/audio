@@ -8,7 +8,7 @@ var (
 	}
 )
 
-func linear2alaw(linear int16) (alaw byte) {
+func Linear2alaw(linear int16) (alaw byte) {
 	var seg int16
 	var mask int16
 
