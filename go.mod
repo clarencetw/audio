@@ -1,1 +1,1 @@
-module "g711"
+module github.com/clarencetw/audio
