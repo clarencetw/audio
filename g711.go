@@ -1,7 +1,7 @@
 package audio
 
 const AmiMask16 int16 = 0x55
-const AmiMask8 byte = 0x5
+const AmiMask8 byte = 0x55
 
 var (
 	segEnd = [8]int16{
@@ -37,7 +37,7 @@ func Alaw2linear(alaw byte) (linear int16) {
 
 	alawBuf := alaw ^ AmiMask8
 	i = (int16(alawBuf & 0x0F) << 4);
-	seg := (alawBuf & 0x70) >> 4;
+	seg := (int16(alawBuf) & 0x70) >> 4;
 	if seg != 0 {
 		i = (i + 0x100) << (seg - 1)
 	}
