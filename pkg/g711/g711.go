@@ -1,4 +1,4 @@
-package audio
+package g711
 
 const AmiMask16 int16 = 0x55
 const AmiMask8 byte = 0x55
@@ -36,12 +36,12 @@ func Alaw2linear(alaw byte) (linear int16) {
 	var i int16
 
 	alawBuf := alaw ^ AmiMask8
-	i = (int16(alawBuf & 0x0F) << 4);
-	seg := (int16(alawBuf) & 0x70) >> 4;
+	i = (int16(alawBuf&0x0F) << 4)
+	seg := (int16(alawBuf) & 0x70) >> 4
 	if seg != 0 {
 		i = (i + 0x100) << (seg - 1)
 	}
-		
+
 	if (alawBuf & 0x80) != 0 {
 		return i
 	}
